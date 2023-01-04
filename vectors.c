@@ -32,6 +32,21 @@ double max_vec(double* x, size_t n) {
     }
 }
 
+unsigned int max_vec(double* x, size_t n) {
+    if(n > 0) {
+        double max = *(x), max_ind = 0;
+        for(unsigned int i = 1; i < n; i++) {
+            if(*(x + i) > max) { 
+                max = *(x + i);
+                max_ind = i;
+            }
+        }
+        return max_ind;
+    } else {
+        return -1;
+    }
+}
+
 double min_vec(double* x, size_t n) {
     if(n > 0) {
         double min = *(x);
@@ -41,6 +56,21 @@ double min_vec(double* x, size_t n) {
         return min;
     } else {
         return DBL_MAX;
+    }
+}
+
+unsigned int min_vec_ind(double* x, size_t n) {
+    if(n > 0) {
+        double min = *(x), min_ind = 0;
+        for(unsigned int i = 1; i < n; i++) {
+            if(*(x + i) < min) { 
+                min = *(x + i);
+                min_ind = i;
+            }
+        }
+        return min_ind;
+    } else {
+        return -1;
     }
 }
 
@@ -77,6 +107,14 @@ void div(double* x, double* y, double* z, size_t n) {
 void power(double* x, int p, size_t n) {
     for(unsigned int i = 0; i < n; i++) {
         *(x + i) = pow(*(x + i), p);
+    }
+}
+
+void delete_element(double *x, unsigned int pos, size_t n) {
+    if(pos <= n) {
+        for(unsigned int i = pos; i < n; i++) {
+            *(x + i) = *(x + i + 1);
+        }
     }
 }
 
