@@ -1,0 +1,12 @@
+double sum(double* x, size_t n);
+double prod(double* x, size_t n);
+double max_vec(double* x, size_t n);
+double min_vec(double* x, size_t n);
+void abs_vec(double* x, size_t n);
+void add(double* x , double* y, double* z, size_t n);
+void sub(double* x, double* y, double* z, size_t n);
+void mult(double* x, double* y, double* z, size_t n);
+void div(double* x, double* y , double* z, size_t n);
+void power(double* x, int p, size_t n);
+double dot(double* x, double* y, size_t n);
+void copy_vec(double* src, double* dst, size_t n);
