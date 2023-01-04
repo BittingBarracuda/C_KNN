@@ -1,5 +1,6 @@
 // Implementation of various distance functions.
 #include <stdlib.h>
+#include "distances.h"
 #include "vectors.h"
 
 double euclidean(double* x, double* y, size_t n) {
