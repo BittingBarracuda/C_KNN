@@ -14,6 +14,7 @@ vector* mult(vector* v1, vector* v2);
 vector* div(vector* v1, vector* v2);
 vector* power(vector* v1, int p);
 vector* delete_element(vector* v, int pos);
+vector* apply(vector* v, double (*f)(double));
 double dot(vector* v1, vector* v2);
 vector* scale(vector* v1, double scalar);
 vector* add_scalar(vector* v1, double scalar);

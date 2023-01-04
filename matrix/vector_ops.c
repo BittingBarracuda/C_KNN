@@ -164,6 +164,14 @@ vector* delete_element(vector* v, int pos) {
     }
 }
 
+vector* apply(vector* v, double (*f)(double)) {
+    vector* u = new_vector(v->dim);
+    for(unsigned int i = 0; i < v->dim; i++) {
+        u->vec[i] = f(v->vec[i]);
+    }
+    return u;
+}
+
 double dot(vector* v1, vector* v2) {
     if(check_dimensions(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
