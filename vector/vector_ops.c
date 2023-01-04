@@ -181,7 +181,7 @@ double dot(vector* v1, vector* v2) {
         }
         return total;
     } else {
-        printf("Vector dimensios must be equal!\n");
+        printf("Vector dimensions must be equal!\n");
         exit(1);
     }
 }
