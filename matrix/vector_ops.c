@@ -63,7 +63,7 @@ double min_vec(vector* v) {
     }
 }
 
-int min_vec_intex(vector* v) {
+int min_vec_index(vector* v) {
     if(v->dim > 0) {
         double min = v->vec[0];
         unsigned int min_ind = 0;
