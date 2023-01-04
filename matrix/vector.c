@@ -20,7 +20,7 @@ void free_vector(vector* v) {
     v = NULL;
 }
 
-void print(vector* v) {
+void print_vector(vector* v) {
     for(unsigned int i = 0; i < v->dim; i++) {
         printf("%f ", v->vec[i]);
     }
