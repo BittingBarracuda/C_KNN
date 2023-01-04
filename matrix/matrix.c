@@ -12,7 +12,15 @@ matrix* new_matrix(int rows, int cols) {
     return mat;
 }
 
-void fill_matrix(matrix* m, double val) {
+void fill_matrix(matrix* m, double** mat) {
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            
+        }
+    }
+}
+
+void fill_matrix_val(matrix* m, double val) {
     for(unsigned int i = 0; i < m->rows; i++) {
         for(unsigned int j = 0; j < m->cols; j++) {
             m->mat[i][j] = val;
@@ -20,7 +28,7 @@ void fill_matrix(matrix* m, double val) {
     }
 }
 
-matrix* ones(int rows, int cols) {
+matrix* ones_matrix(int rows, int cols) {
     matrix* m = new_matrix(rows, cols);
     for(unsigned int i = 0; i < m->rows; i++) {
         for(unsigned int j = 0; j < m->cols; j++) {
@@ -30,7 +38,7 @@ matrix* ones(int rows, int cols) {
     return m;
 }
 
-matrix* zeros(int rows, int cols) {
+matrix* zeros_matrix(int rows, int cols) {
     matrix* m = new_matrix(rows, cols);
     for(unsigned int i = 0; i < m->rows; i++) {
         for(unsigned int j = 0; j < m->cols; j++) {

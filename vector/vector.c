@@ -14,6 +14,12 @@ void fill_vector(vector* v, double* entries) {
     }
 }
 
+void fill_vector_value(vector* v, double val) {
+    for(unsigned int i = 0; i < v->dim; i++) {
+        v->vec[i] = val;
+    }
+}
+
 void free_vector(vector* v) {
     free(v->vec);
     free(v);
