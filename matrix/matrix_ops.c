@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <math.h>
+//#include <math.h>
 #include "matrix_ops.h"
 
 int check_dimensions(matrix* m1, matrix* m2) {
@@ -32,7 +32,7 @@ double prod(matrix* m) {
     return prod;
 }
 
-matrix* abs_mat(matrix* m) {
+/*matrix* abs_mat(matrix* m) {
     matrix* m2 = new_matrix(m->rows, m->cols);
     for(unsigned int i = 0; i < m->rows; i++) {
         for(unsigned int j = 0; j < m->cols; j++) {
@@ -40,7 +40,7 @@ matrix* abs_mat(matrix* m) {
         }
     }
     return m2;
-}
+}*/
 
 matrix* add(matrix* m1, matrix* m2) {
     if(check_dimensions(m1, m2)) {
