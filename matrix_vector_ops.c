@@ -21,6 +21,7 @@ matrix* add_rows(matrix* m, vector* v) {
         }
         return n;
     } else {
+        printf("Cannot sum matrix and vector with given dimensions!");
         exit(1);
     }
 }
@@ -35,6 +36,7 @@ matrix* add_cols(matrix* m, vector* v) {
         }
         return n;
     } else {
+        printf("Cannot sum matrix and vector with given dimensions!");
         exit(1);
     }
 }
@@ -50,6 +52,7 @@ matrix* sub_rows(matrix* m, vector* v) {
         }
         return n;
     } else {
+        printf("Cannot subtract matrix and vector with given dimensions!");
         exit(1);
     }
 }
@@ -64,6 +67,7 @@ matrix* sub_cols(matrix* m, vector* v) {
         }
         return n;
     } else {
+        printf("Cannot subtract matrix and vector with given dimensions!");
         exit(1);
     }
 }
@@ -80,6 +84,7 @@ vector* dot_mv(matrix* m, vector* v) {
         }
         return n;
     } else {
+        printf("Cannot dot matrix and vector with given dimensions!");
         exit(1);
     }
 }
@@ -96,6 +101,7 @@ matrix* dot_vm(vector* v, matrix* m) {
         }
         return n;
     } else {
+        printf("Cannot dot matrix and vector with given dimensions!");
         exit(1);
     }
 }
