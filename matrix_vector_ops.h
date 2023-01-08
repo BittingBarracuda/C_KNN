@@ -1,5 +1,5 @@
-#include "vector_ops.h"
-#include "matrix_ops.h"
+#include "./vector/vector.h"
+#include "./matrix/matrix.h"
 
 int check_dimensions_rows(matrix* m, vector* v);
 int check_dimensions_cols(matrix* m, vector* v);

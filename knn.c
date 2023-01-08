@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "distances.h"
-//#include "./matrix/vector_ops.h"
+#include "./vector/vector_ops.h"
 #include "./matrix/matrix_ops.h"
+#include "matrix_vector_ops.h"
 
 unsigned int* get_nearest_k(matrix* data, matrix* X, double (*dist)(double*, double*, size_t), unsigned int k);
 
