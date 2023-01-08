@@ -5,21 +5,10 @@
 #include "./matrix/matrix_ops.h"
 #include "matrix_vector_ops.h"
 
-unsigned int* get_nearest_k(matrix* data, matrix* X, double (*dist)(double*, double*, size_t), unsigned int k);
+unsigned int* get_nearest_k(matrix* data, vector* x, double (*dist)(double*, double*, size_t), unsigned int k);
 
-unsigned int* get_nearest_k(matrix* data, matrix* X, double (*dist)(double*, double*, size_t), unsigned int k) {
-    /*double* distances = calloc(n_rows, sizeof(double));
-    for(unsigned int i = 0; i < n_rows; ++i) {
-        *(distances + i) = dist(data[i], x, n_cols);
-    }
-    unsigned int* closest = calloc(k, sizeof(unsigned int));
-    for(unsigned int i = 0; i < k; i++) {
-        unsigned int aux = min_vec_index(distances, n_rows);
-        delete_element(distances, aux, n_rows);
-        *(closest + i) = aux;
-    }
-    free(distances);
-    return closest;*/
+unsigned int* get_nearest_k(matrix* data, vector* x, double (*dist)(double*, double*, size_t), unsigned int k) {
+    double* distances = calloc(x->dim, sizeof(double));
 }
 
 unsigned int get_class(int* classes, unsigned int* closest, int k) {

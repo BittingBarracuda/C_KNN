@@ -1,16 +1,18 @@
 // Implementation of various distance functions.
 #include <stdlib.h>
-#include "./matrix/matrix_ops.h"
+#include <math.h>
+#include "matrix_vector_ops.h"
+#include "<./matrix/matrix_ops.h"
 
-/*double euclidean(double* x, double* y, size_t n) {
-    double* z = calloc(n, sizeof(double));
-    sub(x, y, z, n);
-    power(z, 2, n);
-    double res = sum(z, n);
-    free(z);
-    return res;
+matrix* euclidean(matrix* m, vector* x) {
+    matrix* tmp = sub_rows(m, x);
+    tmp = power(tmp, 2);
+    tmp = sum_rows(tmp);
+    tmp = apply(tmp, sqrt);
+    return tmp;
 }
 
+/*
 double manhattan(double* x, double* y, size_t n) {
     double *z = calloc(n, sizeof(double));
     sub(x, y, z, n);
