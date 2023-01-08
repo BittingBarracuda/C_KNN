@@ -68,6 +68,34 @@ matrix* sub_cols(matrix* m, vector* v) {
     }
 }
 
+vector* dot_mv(matrix* m, vector* v) {
+    if(check_dimensions_cols(m, v)) {
+        vector* n = new_vector(m->rows);
+        for(unsigned int i = 0; i < m->rows; i++) {
+            double tmp = 0.0;
+            for(unsigned int j = 0; j < m->cols; j++) {
+                tmp += m->mat[i][j] * v->vec[j];
+            }
+            n->vec[i] = tmp;
+        }
+        return n;
+    } else {
+        exit(1);
+    }
+}
 
-matrix* dot_mv(matrix* m, vector* v);
-matrix* dot_vm(vector* v, matrix* m);
+matrix* dot_vm(vector* v, matrix* m) {
+    if(check_dimensions_rows(m, v)) {
+        vector* n = new_vector(m->cols);
+        for(unsigned int i = 0; i < m->cols; i++) {
+            double tmp = 0.0;
+            for(unsigned int j = 0; j < m->rows; j++) {
+                tmp += v->vec[j] * m->mat[j][i];
+            }
+            n->vec[i] = tmp;
+        }
+        return n;
+    } else {
+        exit(1);
+    }
+}

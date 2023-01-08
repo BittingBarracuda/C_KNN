@@ -7,5 +7,5 @@ matrix* add_rows(matrix* m, vector* v);
 matrix* add_cols(matrix* m, vector* v);
 matrix* sub_rows(matrix* m, vector* v);
 matrix* sub_cols(matrix* m, vector* v);
-matrix* dot_mv(matrix* m, vector* v);
-matrix* dot_vm(vector* v, matrix* m);
+vector* dot_mv(matrix* m, vector* v);
+vector* dot_vm(vector* v, matrix* m);
