@@ -21,6 +21,18 @@ double sum(matrix* m) {
     return total;
 }
 
+matrix* sum_rows(matrix* m) {
+    matrix* n = new_matrix(m->rows, 1);
+    for(unsigned int i = 0; i < m->rows; i++) {
+        double tmp = 0.0;
+        for(unsigned int j = 0; j < m->cols; j++) {
+            tmp += m->mat[i][j];
+        }
+        n->mat[i][0] = tmp;
+    }
+    return n;
+}
+
 double prod(matrix* m) {
     double prod = 1.0;
     for(unsigned int i = 0; i < m->rows; i++) {
