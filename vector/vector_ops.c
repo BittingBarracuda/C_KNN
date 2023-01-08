@@ -7,7 +7,7 @@ int check_dimensions(vector* v1, vector* v2) {
     return 0;
 }
 
-double sum(vector* v) {
+double sum_vec(vector* v) {
     double sum = 0.0;
     for(unsigned int i = 0; i < v->dim; i++) {
         sum += v->vec[i];
@@ -15,7 +15,7 @@ double sum(vector* v) {
     return sum;
 }
 
-double prod(vector* v) {
+double prod_vec(vector* v) {
     double prod = 1.0;
     for(unsigned int i = 0; i < v->dim; i++) {
         prod *= v->vec[i];
@@ -87,7 +87,7 @@ vector* abs_vec(vector* v) {
     return u;
 }
 
-vector* add(vector* v1, vector* v2) {
+vector* add_vec(vector* v1, vector* v2) {
     if(check_dimensions(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
@@ -100,7 +100,7 @@ vector* add(vector* v1, vector* v2) {
     }
 }
 
-vector* sub(vector* v1, vector* v2) {
+vector* sub_vec(vector* v1, vector* v2) {
     if(check_dimensions(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
@@ -113,7 +113,7 @@ vector* sub(vector* v1, vector* v2) {
     }
 }
 
-vector* mult(vector* v1, vector* v2) {
+vector* mult_vec(vector* v1, vector* v2) {
     if(check_dimensions(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
@@ -126,7 +126,7 @@ vector* mult(vector* v1, vector* v2) {
     }
 }
 
-vector* div(vector* v1, vector* v2) {
+vector* div_vec(vector* v1, vector* v2) {
     if(check_dimensions(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
@@ -139,7 +139,7 @@ vector* div(vector* v1, vector* v2) {
     }
 }
 
-vector* power(vector* v1, int p) {
+vector* power_vec(vector* v1, int p) {
     vector* v2 = new_vector(v1->dim);
     for(unsigned int i = 0; i < v1->dim; i++) {
         v2->vec[i] = pow(v1->vec[i], p);
@@ -147,7 +147,7 @@ vector* power(vector* v1, int p) {
     return v2;
 }
 
-vector* delete_element(vector* v, int pos) {
+vector* delete_element_vec(vector* v, int pos) {
     if(v->dim <= pos) {
         vector* u = new_vector(v->dim - 1);
         unsigned int j = 0;
@@ -164,7 +164,7 @@ vector* delete_element(vector* v, int pos) {
     }
 }
 
-vector* apply(vector* v, double (*f)(double)) {
+vector* apply_vec(vector* v, double (*f)(double)) {
     vector* u = new_vector(v->dim);
     for(unsigned int i = 0; i < v->dim; i++) {
         u->vec[i] = f(v->vec[i]);
@@ -172,7 +172,7 @@ vector* apply(vector* v, double (*f)(double)) {
     return u;
 }
 
-double dot(vector* v1, vector* v2) {
+double dot_vec(vector* v1, vector* v2) {
     if(check_dimensions(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         double total = 0.0;
@@ -186,7 +186,7 @@ double dot(vector* v1, vector* v2) {
     }
 }
 
-vector* scale(vector* v, double scalar) {
+vector* scale_vec(vector* v, double scalar) {
     vector* u = new_vector(v->dim);
     for(unsigned int i = 0; i < v->dim; i++) {
         u->vec[i] = scalar * v->vec[i];
@@ -194,7 +194,7 @@ vector* scale(vector* v, double scalar) {
     return u;
 }
 
-vector* add_scalar(vector* v, double scalar) {
+vector* add_scalar_vec(vector* v, double scalar) {
     vector* u = new_vector(v->dim);
     for(unsigned int i = 0; i < v->dim; i++) {
         u->vec[i] = scalar + v->vec[i];

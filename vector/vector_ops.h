@@ -1,20 +1,20 @@
 #include "vector.h"
 
-int check_dimensions(vector* v1, vector* v2);
-double sum(vector* v);
-double prod(vector* v);
+int check_dimensions_vec(vector* v1, vector* v2);
+double sum_vec(vector* v);
+double prod_vec(vector* v);
 double max_vec(vector* v);
 int max_vec_index(vector* v);
 double min_vec(vector* v);
 int min_vec_index(vector* v);
 vector* abs_vec(vector* v);
-vector* add(vector* v1, vector* v2);
-vector* sub(vector* v1, vector* v2);
-vector* mult(vector* v1, vector* v2);
-vector* div(vector* v1, vector* v2);
-vector* power(vector* v1, int p);
-vector* delete_element(vector* v, int pos);
-vector* apply(vector* v, double (*f)(double));
-double dot(vector* v1, vector* v2);
-vector* scale(vector* v1, double scalar);
-vector* add_scalar(vector* v1, double scalar);
+vector* add_vec(vector* v1, vector* v2);
+vector* sub_vec(vector* v1, vector* v2);
+vector* mult_vec(vector* v1, vector* v2);
+vector* div_vec(vector* v1, vector* v2);
+vector* power_vec(vector* v1, int p);
+vector* delete_element_vec(vector* v, int pos);
+vector* apply_vec(vector* v, double (*f)(double));
+double dot_vec(vector* v1, vector* v2);
+vector* scale_vec(vector* v1, double scalar);
+vector* add_scalar_vec(vector* v1, double scalar);
