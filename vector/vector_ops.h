@@ -13,7 +13,7 @@ vector* sub_vec(vector* v1, vector* v2);
 vector* mult_vec(vector* v1, vector* v2);
 vector* div_vec(vector* v1, vector* v2);
 vector* power_vec(vector* v1, int p);
-void* delete_element_vec(vector* v, int pos);
+void delete_element_vec(vector* v, int pos);
 vector* apply_vec(vector* v, double (*f)(double));
 double dot_vec(vector* v1, vector* v2);
 vector* scale_vec(vector* v1, double scalar);
