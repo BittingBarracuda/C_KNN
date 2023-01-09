@@ -12,7 +12,7 @@ unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, ve
         *(closest + i) = min_vec_index(distances);
         distances = delete_element_vec(distances, *(closest + i));
     }
-    free_vector(dist);
+    free_vector(distances);
     return closest;
 }
 
