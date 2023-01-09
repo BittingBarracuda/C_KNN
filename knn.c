@@ -9,6 +9,7 @@ void read_data(char* file_path, char* classes_path, matrix* data, int* classes);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 int get_class(int* classes, unsigned int* closest, int k);
 void split_classes_array(int* classes, int* classes_train, int* classes_test, double training_split);
+double get_precission(int* classes, int* predicted_classes);
 
 int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vector*), unsigned int k) {
     int* predicted_classes = calloc(test->rows, sizeof(int));
@@ -86,6 +87,15 @@ void split_classes_array(int* classes, int* classes_train, int* classes_test, do
     }
 }
 
+double get_precission(int* classes, int* predicted_classes) {
+    int size = sizeof(classes) / sizeof(int);
+    int count_ok = 0;
+    for(unsigned int i = 0; i < size; i++) {
+        if(*(classes + i) == *(predicted_classes + i)) count_ok += 1;
+    }
+    return (double)(count_ok / size);
+}
+
 int main(void) {
     int k;
     char* file_path = calloc(MAXINPUT, sizeof(char));
@@ -102,5 +112,6 @@ int main(void) {
     get_matrix_split(data, train, test, 0.7);
     free_matrix(data);
     printf("[!] Fitting test dataset...\n");
-    fit(train, test, classes, euclidean, k);
+    int* predicted_classes = fit(train, test, classes, euclidean, k);
+    printf("[+] Precission of the model is: %.6f\n", get_precission(classes, predicted_classes));
 }
