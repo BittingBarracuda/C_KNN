@@ -6,11 +6,11 @@ unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, ve
 unsigned int get_class(int* classes, unsigned int* closest, int k);
 
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k) {
-    vector* dist = dist(data, x);
+    vector* distances = dist(data, x);
     unsigned int* closest = calloc(k, sizeof(double));
     for(unsigned int i = 0; i < k; i++) {
-        *(closest + i) = min_vec_index(dist);
-        delete_element_vec(dist, *(closest + i));
+        *(closest + i) = min_vec_index(distances);
+        distances = delete_element_vec(distances, *(closest + i));
     }
     free_vector(dist);
     return closest;
