@@ -369,6 +369,18 @@ void shuffle(matrix* m) {
     }
 }
 
+void shuffle_with_classes(matrix* m, int* classes) {
+    for(unsigned int i = 0; i < m->rows; i++) {
+        int r = rand() % m->rows;
+        double* tmp_m = m->mat[r];
+        int tmp_c = classes[r]; 
+        m->mat[r] = m->mat[i];
+        classes[r] = classes[i];
+        m->mat[i] = tmp_m;
+        classes[i] = tmp_c;
+    }
+}
+
 void get_matrix_split(matrix* m, matrix* s1, matrix* s2, double split) {
     if(split <= 1.0 && split >= 0.0) {
         unsigned int n_rows_s1 = (unsigned int)(split * m->rows);

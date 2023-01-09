@@ -5,7 +5,7 @@
 #define MAXINPUT 1024
 
 int* fit(matrix* test, matrix* train, vector* (*dist)(matrix*, vector*), unsigned int k);
-matrix* read_data(char* file_path);
+matrix* read_data(char* file_path, char* classes_path);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 int get_class(int* classes, unsigned int* closest, int k);
 void split_classes_array(int* classes, int* classes_train, int* classes_test, double training_split);
@@ -20,18 +20,19 @@ int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vec
     return predicted_classes;
 }
 
-matrix* read_data(char* file_path) {
+matrix* read_data(char* file_path, char* classes_path) {
     matrix* data = read_matrix(file_path);
+    int* classes = read_classes_file(classes_path, data->rows);
     shuffle(data);
     return data;
 }
 
 int* read_classes_file(char* file_path, int n_instances) {
     FILE* fd = fopen(file_path, "r");
-    char* line[1024];
+    char* line[MAXINPUT];
     int* classes = calloc(n_instances, sizeof(int));
     for(unsigned int i = 0; i < n_instances; i++) {
-        fgets(line, 1024, fd);
+        fgets(line, MAXINPUT, fd);
         *(classes + i) = atoi(line);
     }
     return classes;
@@ -93,11 +94,10 @@ int main(void) {
     scanf("[+] Enter the path to the dataset file: %s\n", file_path);
     scanf("[+] Enter the path to the file with the classes: %s\n", classes_path);
     scanf("[+] Enter the number of neighbors for the K-NN classifier: %d\n", &k);
-    printf("[!] Reading dataset file...\n");
-    matrix* data = read_data(file_path);
-    printf("[!] Dataset file read and saved!\nReading classes file...\n");
-    int* classes = read_classes_file(classes_path, data->rows);
-    printf("[!] Classes file read and saved!\n");
+    printf("[!] Reading dataset and classes files...\n");
+    matrix* data = read_data(file_path, classes_path);
+    printf("[!] Datasets files read and saved!\n");
+    //int* classes = read_classes_file(classes_path, data->rows);
     matrix* train; matrix* test;
     printf("[!] Splitting dataset into test and train sets...\n");
     get_matrix_split(data, train, test, 0.7);
