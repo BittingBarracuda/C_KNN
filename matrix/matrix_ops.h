@@ -23,3 +23,4 @@ matrix* scalar_sum(matrix* m1, double c);
 void save_matrix(matrix* m1, char* file_name);
 matrix* read_matrix(char* file_name);
 void shuffle(matrix* m);
+matrix* get_matrix_split(matrix* m, double split);

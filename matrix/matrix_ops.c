@@ -276,3 +276,18 @@ void shuffle(matrix* m) {
         m->mat[i] = tmp;
     }
 }
+
+matrix* get_matrix_split(matrix* m, double split) {
+    if(split <= 1.0 && split >= 0.0) {
+        unsigned int n_rows = (unsigned int)(split * m->rows);
+        matrix* n = new_matrix(n_rows, m->cols);
+        for(unsigned int i = 0; i < n_rows; i++) {
+            for(unsigned int j = 0; j < m->cols; j++) {
+                n->mat[i][j] = m->mat[i][j];
+            }
+        }
+        return n;
+    } else {
+        exit(1);
+    }
+}
