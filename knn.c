@@ -114,4 +114,5 @@ int main(void) {
     printf("[!] Fitting test dataset...\n");
     int* predicted_classes = fit(train, test, classes, euclidean, k);
     printf("[+] Precission of the model is: %.6f\n", get_precission(classes, predicted_classes));
+    free(predicted_classes); free_matrix(train); free_matrix(test); free(file_path); free(classes_path);
 }
