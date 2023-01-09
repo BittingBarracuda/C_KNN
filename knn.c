@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "distances.h"
 
+#define MAXINPUT 1024
+
 int* fit(matrix* test, matrix* train, vector* (*dist)(matrix*, vector*), unsigned int k);
 matrix* read_data(char* file_path);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
@@ -68,11 +70,21 @@ int get_class(int* classes, unsigned int* closest, int k) {
 }
 
 int main(void) {
-    char* file_path = "TODO";
-    char* classes_path = "TODO";
+    char* file_path = calloc(MAXINPUT, sizeof(char));
+    char* classes_path = calloc(MAXINPUT, sizeof(char));
+    int k;
+    scanf("[+] Enter the path to the dataset file: %s\n", file_path);
+    scanf("[+] Enter the path to the file with the classes: %s\n", classes_path);
+    scanf("[+] Enter the number of neighbors for the K-NN classifier: %d\n", &k);
+    printf("[!] Reading dataset file...\n");
     matrix* data = read_data(file_path);
+    printf("[!] Dataset file read and saved!\nReading classes file...\n");
     int* classes = read_classes_file(classes_path, data->rows);
+    printf("[!] Classes file read and saved!\n");
     matrix* train; matrix* test;
+    printf("[!] Splitting dataset into test and train sets...\n");
     get_matrix_split(data, train, test, 0.7);
     free_matrix(data);
+    printf("[!] Fitting test dataset...\n");
+    fit(train, test, classes, euclidean, k);
 }
