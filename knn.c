@@ -2,9 +2,14 @@
 #include <stdlib.h>
 #include "distances.h"
 
+void fit(matrix* test, matrix* train);
+matrix* read_data(char* file_path);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 unsigned int get_class(int* classes, unsigned int* closest, int k);
-matrix* read_data(char* file_path);
+
+void fit(matrix* train, matrix* test) {
+    
+}
 
 matrix* read_data(char* file_path) {
     matrix* data = read_matrix(file_path);
@@ -41,9 +46,14 @@ unsigned int get_class(int* classes, unsigned int* closest, int k) {
             max = selected_classes[i];
         }
     }
+    free(selected_classes);
     return max;
 }
 
 int main(void) {
-    return 0;
+    char* file_path = "TODO";
+    matrix* data = read_data(file_path);
+    matrix* train; matrix* test;
+    get_matrix_split(data, train, test, 0.7);
+    free_matrix(data);
 }
