@@ -35,6 +35,15 @@ vector* vector_from_matrix(matrix* m) {
     }
 }
 
+vector* vector_from_row(matrix* m, unsigned int row) {
+    if(row >= 0 && row <= m->rows) {
+        vector* ret = new_vector(m->cols);
+        ret->vec = m->mat[row];
+    } else {
+        exit(1);
+    }
+}
+
 matrix* add_rows(matrix* m, vector* v) {
     if(check_dimensions_cols(m, v)) {
         matrix* n = new_matrix(m->rows, m->cols);
