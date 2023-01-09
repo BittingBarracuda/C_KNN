@@ -1,8 +1,11 @@
+#include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "matrix_ops.h"
 
 #define MAXCHAR 1024
+
+srand(time(NULL));
 
 int check_dimensions(matrix* m1, matrix* m2) {
     if(m1->rows == m2->rows && m1->cols == m2->cols) return 1;
@@ -263,4 +266,13 @@ matrix* read_matrix(char* file_name) {
         }
     }
     return m;
+}
+
+void shuffle(matrix* m) {
+    for(unsigned int i = 0; i < m->rows; i++) {
+        int r = rand() % m->rows;
+        double* tmp = m->mat[r];
+        m->mat[r] = m->mat[i];
+        m->mat[i] = tmp;
+    }
 }
