@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "matrix_ops.h"
 
+#define MAXCHAR 1024
+
 int check_dimensions(matrix* m1, matrix* m2) {
     if(m1->rows == m2->rows && m1->cols == m2->cols) return 1;
     return 0;
@@ -244,4 +246,21 @@ void save_matrix(matrix* m, char* file_name) {
     }
     printf("Matrix successfully saved to %s\n", file_name);
     fclose(file_name);
+}
+
+matrix* read_matrix(char* file_name) {
+    FILE* file = fopen(file_name, "r");
+    char read[MAXCHAR];
+    fgets(read, MAXCHAR, file);
+    int rows = atoi(read);
+    fgets(read, MAXCHAR, file);
+    int cols = atoi(read);
+    matrix* m = new_matrix(rows, cols);
+    for(unsigned int i = 0; i < rows; i++) {
+        for(unsigned int j = 0; j < cols; j++) {
+            fgets(read, MAXCHAR, file);
+            m->mat[i][j] = strtod(read, NULL);
+        }
+    }
+    return m;
 }
