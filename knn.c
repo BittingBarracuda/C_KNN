@@ -17,6 +17,7 @@ int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vec
         vector* tmp = vector_from_row(test, i);
         unsigned int* tmp_closest = get_nearest_k(train, tmp, dist, k);
         *(predicted_classes + i) = get_class(classes, tmp_closest, k);
+        free(tmp);
     }
     return predicted_classes;
 }
