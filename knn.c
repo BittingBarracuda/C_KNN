@@ -9,6 +9,7 @@ unsigned int* get_nearest_k(matrix* data, vector* x, matrix* (*dist)(matrix*, ve
 
 unsigned int* get_nearest_k(matrix* data, vector* x, matrix* (*dist)(matrix*, vector*), unsigned int k) {
     matrix* dist = dist(data, x);
+    int* index = min_rows_index(dist);
     
 }
 

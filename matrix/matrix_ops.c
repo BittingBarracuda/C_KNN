@@ -12,6 +12,52 @@ int can_dot(matrix* m1, matrix* m2) {
     return 0;
 }
 
+double max_rows(matrix* m) {
+    double max = m->mat[0][0];
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            if(m->mat[i][j] > max) max = m->mat[i][j];
+        }
+    }
+    return max;
+}
+
+double min_rows(matrix* m) {
+    double min = m->mat[0][0];
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            if(m->mat[i][j] < min) min = m->mat[i][j];
+        }
+    }
+    return min;
+}
+
+int* max_rows_index(matrix* m) {
+    double max = m->mat[0][0];
+    int index[2] = {0, 0};
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            if(m->mat[i][j] > max) { 
+                max = m->mat[i][j];
+                index[0] = i; index[1] = j;
+        }
+    }
+    return index;
+}
+
+int* min_rows_index(matrix* m) {
+    double min = m->mat[0][0];
+    int index[2] = {0, 0};
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            if(m->mat[i][j] < min) { 
+                min = m->mat[i][j];
+                index[0] = i; index[1] = j;
+        }
+    }
+    return index;
+}
+
 double sum(matrix* m) {
     double total = 0.0;
     for(unsigned int i = 0; i < m->rows; i++) {

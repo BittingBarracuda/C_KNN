@@ -3,6 +3,10 @@
 int check_dimensions(matrix* m1, matrix* m2);
 int can_dot(matrix* m1, matrix* m2);
 double sum(matrix* m);
+double max_rows(matrix* m);
+double min_rows(matrix* m);
+int* max_rows_index(matrix* m);
+int* min_rows_index(matrix* m);
 matrix* sum_rows(matrix* m);
 matrix* sum_cols(matrix* m);
 double prod(matrix* m);
