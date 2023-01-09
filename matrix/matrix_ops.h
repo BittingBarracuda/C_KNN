@@ -16,3 +16,4 @@ matrix* apply(matrix* m1, double (*f)(double));
 matrix* dot(matrix* m1, matrix* m2);
 matrix* scale(matrix* m1, double c);
 matrix* scalar_sum(matrix* m1, double c);
+void save_matrix(matrix* m1, char* file_name);

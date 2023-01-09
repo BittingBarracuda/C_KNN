@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "matrix_ops.h"
 
 int check_dimensions(matrix* m1, matrix* m2) {
@@ -182,4 +183,17 @@ matrix* scalar_sum(matrix* m1, double c) {
         }
     }
     return m2;
+}
+
+void save_matrix(matrix* m, char* file_name) {
+    FILE* file = fopen(file_name, "w");
+    fprintf(file, "%d\n", m->rows);
+    fprintf(file, "%d\n", m->cols);
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            fprintf(file, ".6f\n", m->mat[i][j]);
+        }
+    }
+    printf("Matrix successfully saved to %s\n", file_name);
+    fclose(file_name);
 }
