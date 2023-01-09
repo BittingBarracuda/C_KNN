@@ -23,6 +23,17 @@ matrix* read_data(char* file_path) {
     return data;
 }
 
+int* read_classes_file(char* file_path, int n_instances) {
+    FILE* fd = fopen(file_path, "r");
+    char* line[1024];
+    int* classes = calloc(n_instances, sizeof(int));
+    for(unsigned int i = 0; i < n_instances; i++) {
+        fgets(line, 1024, fd);
+        *(classes + i) = atoi(line);
+    }
+    return classes;
+}
+
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k) {
     vector* distances = dist(data, x);
     unsigned int* closest = calloc(k, sizeof(double));
@@ -58,7 +69,9 @@ int get_class(int* classes, unsigned int* closest, int k) {
 
 int main(void) {
     char* file_path = "TODO";
+    char* classes_path = "TODO";
     matrix* data = read_data(file_path);
+    int* classes = read_classes_file(classes_path, data->rows);
     matrix* train; matrix* test;
     get_matrix_split(data, train, test, 0.7);
     free_matrix(data);
