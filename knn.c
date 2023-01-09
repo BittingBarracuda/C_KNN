@@ -6,10 +6,10 @@ unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, ve
 unsigned int get_class(int* classes, unsigned int* closest, int k);
 matrix* read_data(char* file_path);
 
-matrix* read_data(char* file_path, double training_split) {
+matrix* read_data(char* file_path) {
     matrix* data = read_matrix(file_path);
     shuffle(data);
-    
+    return data;
 }
 
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k) {
