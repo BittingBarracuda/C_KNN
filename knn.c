@@ -8,6 +8,7 @@ matrix* read_data(char* file_path);
 
 matrix* read_data(char* file_path, double training_split) {
     matrix* data = read_matrix(file_path);
+    shuffle(data);
     
 }
 
