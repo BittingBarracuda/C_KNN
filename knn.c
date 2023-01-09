@@ -4,6 +4,12 @@
 
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 unsigned int get_class(int* classes, unsigned int* closest, int k);
+matrix* read_data(char* file_path);
+
+matrix* read_data(char* file_path, double training_split) {
+    matrix* data = read_matrix(file_path);
+    
+}
 
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k) {
     vector* distances = dist(data, x);
