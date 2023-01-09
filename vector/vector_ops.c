@@ -147,17 +147,12 @@ vector* power_vec(vector* v1, int p) {
     return v2;
 }
 
-vector* delete_element_vec(vector* v, int pos) {
+void delete_element_vec(vector* v, int pos) {
     if(v->dim <= pos) {
-        vector* u = new_vector(v->dim - 1);
-        unsigned int j = 0;
-        for(unsigned int i = 0; i < v->dim; i++) {
-            if(i != pos) { 
-                u->vec[i] = v->vec[j];
-                j++;
-            }
+        v->dim = v->dim - 1;
+        for(unsigned int i = pos; i < v->dim; i++) {
+            v->vec[i] = v->vec[i+1];
         }
-        return u;
     } else {
         printf("Index %d not valid for vector of %d diemensions", pos, v->dim);
         exit(1);
