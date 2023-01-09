@@ -12,21 +12,9 @@ matrix* euclidean(matrix* m, vector* x) {
     return tmp;
 }
 
-/*
-double manhattan(double* x, double* y, size_t n) {
-    double *z = calloc(n, sizeof(double));
-    sub(x, y, z, n);
-    abs_vec(z, n);
-    double res = sum(z, n);
-    free(z);
-    return res;
+matrix* manhattan(matrix* m, vector* x) {
+    matrix* tmp = sub_rows(m, x);
+    tmp = abs_mat(tmp);
+    tmp = sum_rows(tmp);
+    return tmp;
 }
-
-double chess(double* x, double* y, size_t n) {
-    double *z = calloc(n, sizeof(double));
-    sub(x, y, z, n);
-    abs(z, n);
-    double res = max_vec(z, n);
-    free(z);
-    return res;
-}*/
