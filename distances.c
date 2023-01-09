@@ -1,8 +1,7 @@
 // Implementation of various distance functions.
 #include <stdlib.h>
 #include <math.h>
-#include "matrix_vector_ops.h"
-#include "<./matrix/matrix_ops.h"
+#include "distances.h"
 
 matrix* euclidean(matrix* m, vector* x) {
     matrix* tmp = sub_rows(m, x);
