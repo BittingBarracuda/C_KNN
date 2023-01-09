@@ -40,6 +40,7 @@ int* max_rows_index(matrix* m) {
             if(m->mat[i][j] > max) { 
                 max = m->mat[i][j];
                 index[0] = i; index[1] = j;
+            }
         }
     }
     return index;
@@ -53,6 +54,7 @@ int* min_rows_index(matrix* m) {
             if(m->mat[i][j] < min) { 
                 min = m->mat[i][j];
                 index[0] = i; index[1] = j;
+            }
         }
     }
     return index;

@@ -3,6 +3,7 @@
 #include "distances.h"
 
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
+unsigned int get_class(int* classes, unsigned int* closest, int k);
 
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k) {
     vector* dist = dist(data, x);
