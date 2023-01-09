@@ -8,6 +8,7 @@ int* fit(matrix* test, matrix* train, vector* (*dist)(matrix*, vector*), unsigne
 matrix* read_data(char* file_path);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 int get_class(int* classes, unsigned int* closest, int k);
+void split_classes_array(int* classes, int* classes_train, int* classes_test, double training_split);
 
 int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vector*), unsigned int k) {
     int* predicted_classes = calloc(test->rows, sizeof(int));
@@ -67,6 +68,22 @@ int get_class(int* classes, unsigned int* closest, int k) {
     }
     free(selected_classes);
     return max;
+}
+
+void split_classes_array(int* classes, int* classes_train, int* classes_test, double training_split) {
+    if(training_split >= 0.0 && training_split <= 1.0) {
+        int size = sizeof(classes) / sizeof(int);
+        int n_rows_train = (int)(0.7 * size);
+        int n_rows_test = size - n_rows_train;
+        classes_train = calloc(n_rows_train, sizeof(int));
+        classes_test = calloc(n_rows_test, sizeof(int));
+        for(unsigned int i = 0; i < n_rows_train; i++) {
+            *(classes_train + i) = *(classes + i);
+        }
+        for(unsigned int i = n_rows_train; i < size; i++) {
+            *(classes_test + i) = *(classes + i);
+        }
+    }
 }
 
 int main(void) {
