@@ -11,6 +11,14 @@ int check_dimensions_cols(matrix* m, vector* v) {
     return 0;
 }
 
+matrix* matrix_from_vector(vector* v) {
+    matrix* m = new_matrix(v->dim, 1);
+    for(unsigned int i = 0; i < v->dim; i++) {
+        m->mat[i][0] = v->vec[i];
+    }
+    return m;
+}
+
 matrix* add_rows(matrix* m, vector* v) {
     if(check_dimensions_cols(m, v)) {
         matrix* n = new_matrix(m->rows, m->cols);
