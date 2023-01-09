@@ -1,5 +1,6 @@
+#include "./vector/vector_ops.h"
 #include "./matrix/matrix_ops.h"
 #include "matrix_vector_ops.h"
 
-matrix* euclidean(matrix* m, vector* x);
-matrix* manhattan(matrix* m, vector* x);
+vector* euclidean(matrix* m, vector* x);
+vector* manhattan(matrix* m, vector* x);

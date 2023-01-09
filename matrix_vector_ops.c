@@ -19,6 +19,22 @@ matrix* matrix_from_vector(vector* v) {
     return m;
 }
 
+vector* vector_from_matrix(matrix* m) {
+    if(m->cols == 1) {
+        vector* v = new_vector(m->rows);
+        for(unsigned int i = 0; i < m->rows; i++) {
+            v->vec[i] = m->mat[i][0];
+        }
+        return v;
+    } else if(m->rows == 1) {
+        vector* v = new_vecto(m->cols);
+        for(unsigned int i = 0; i < m->cols; i++) {
+            v->vec[i] = m->mat[0][i];
+        }
+        return v;
+    }
+}
+
 matrix* add_rows(matrix* m, vector* v) {
     if(check_dimensions_cols(m, v)) {
         matrix* n = new_matrix(m->rows, m->cols);
