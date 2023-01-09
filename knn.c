@@ -2,13 +2,19 @@
 #include <stdlib.h>
 #include "distances.h"
 
-void fit(matrix* test, matrix* train);
+int* fit(matrix* test, matrix* train, vector* (*dist)(matrix*, vector*), unsigned int k);
 matrix* read_data(char* file_path);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
-unsigned int get_class(int* classes, unsigned int* closest, int k);
+int get_class(int* classes, unsigned int* closest, int k);
 
-void fit(matrix* train, matrix* test) {
-    
+int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vector*), unsigned int k) {
+    int* predicted_classes = calloc(test->rows, sizeof(int));
+    for(unsigned int i = 0; i < test->rows; i++) {
+        vector* tmp = vector_from_row(test, i);
+        unsigned int* tmp_closest = get_nearest_k(train, tmp, dist, k);
+        *(predicted_classes + i) = get_class(classes, tmp_closest, k);
+    }
+    return predicted_classes;
 }
 
 matrix* read_data(char* file_path) {
@@ -28,7 +34,7 @@ unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, ve
     return closest;
 }
 
-unsigned int get_class(int* classes, unsigned int* closest, int k) {
+int get_class(int* classes, unsigned int* closest, int k) {
     int* selected_classes = calloc(k, sizeof(int));
     for(unsigned int i = 0; i < k; i++) {
         selected_classes[i] = classes[closest[i]];
