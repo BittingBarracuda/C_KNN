@@ -10,7 +10,7 @@ unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, ve
     unsigned int* closest = calloc(k, sizeof(double));
     for(unsigned int i = 0; i < k; i++) {
         *(closest + i) = min_vec_index(dist);
-        delete_element_vec(*(closest + i));
+        delete_element_vec(dist, *(closest + i));
     }
     free_vector(dist);
     return closest;
