@@ -12,3 +12,7 @@ matrix* sub_rows(matrix* m, vector* v);
 matrix* sub_cols(matrix* m, vector* v);
 vector* dot_mv(matrix* m, vector* v);
 vector* dot_vm(vector* v, matrix* m);
+void add_rows_inplace(matrix* m, vector* v);
+void add_cols_inplace(matrix* m, vector* v);
+void sub_rows_inplace(matrix* m, vector* v);
+void sub_cols_inplace(matrix* m, vector* v);

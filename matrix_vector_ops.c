@@ -138,3 +138,55 @@ matrix* dot_vm(vector* v, matrix* m) {
         exit(1);
     }
 }
+
+void add_rows_inplace(matrix* m, vector* v) {
+    if(check_dimensions_cols(m, v)) {
+        for(unsigned int i = 0; i < m->rows; i++) {
+            for(unsigned int j = 0; j < m->cols; j++) {
+                m->mat[i][j] = v->vec[j] + m->mat[i][j];
+            }
+        }
+    } else {
+        printf("Cannot sum matrix and vector with given dimensions!");
+        exit(1);
+    }
+}
+
+void add_cols_inplace(matrix* m, vector* v) {
+    if(check_dimensions_rows(m, v)) {
+        for(unsigned int i = 0; i < m->cols; i++) {
+            for(unsigned int j = 0; j < m->rows; j++) {
+                m->mat[j][i] = v->vec[j] + m->mat[j][i];
+            }
+        }
+    } else {
+        printf("Cannot sum matrix and vector with given dimensions!");
+        exit(1);
+    }
+}
+
+void sub_rows_inplace(matrix* m, vector* v) {
+    if(check_dimensions_cols(m, v)) {
+        for(unsigned int i = 0; i < m->rows; i++) {
+            for(unsigned int j = 0; j < m->cols; j++) {
+                m->mat[i][j] = v->vec[j] - m->mat[i][j];
+            }
+        }
+    } else {
+        printf("Cannot subtract matrix and vector with given dimensions!");
+        exit(1);
+    }
+}
+
+void sub_cols_inplace(matrix* m, vector* v) {
+    if(check_dimensions_rows(m, v)) {
+        for(unsigned int i = 0; i < m->rows; i++) {
+            for(unsigned int j = 0; j < m->cols; j++) {
+                m->mat[i][j] = v->vec[j] - m->mat[i][j];
+            }
+        }
+    } else {
+        printf("Cannot subtract matrix and vector with given dimensions!");
+        exit(1);
+    }
+}
