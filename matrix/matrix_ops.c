@@ -222,7 +222,7 @@ matrix* scale(matrix* m1, double c) {
     matrix* m2 = new_matrix(m1->rows, m1->cols);
     for(unsigned int i = 0; i < m1->rows; i++) {
         for(unsigned int j = 0; j < m1->cols; j++) {
-            m2->mat[i][j] = c * m2->mat[i][j];
+            m2->mat[i][j] = c * m1->mat[i][j];
         }
     }
     return m2;
@@ -236,6 +236,98 @@ matrix* scalar_sum(matrix* m1, double c) {
         }
     }
     return m2;
+}
+
+void abs_mat_inplace(matrix* m) {
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            m->mat[i][j] = abs(m->mat[i][j]);
+        }
+    }
+}
+
+void add_inplace(matrix* m1, matrix* m2) {
+    if(check_dimensions(m1, m2)) {
+        for(unsigned int i = 0; i < m1->rows; i++) {
+            for(unsigned int j = 0; j < m1->cols; j++) {
+                m1->mat[i][j] = m1->mat[i][j] + m2->mat[i][j];
+            }
+        }
+    } else {
+        printf("Matrix dimensions should be equal to sum them!\n");
+        exit(1);
+    }
+}
+
+void sub_inplace(matrix* m1, matrix* m2) {
+    if(check_dimensions(m1, m2)) {
+        for(unsigned int i = 0; i < m1->rows; i++) {
+            for(unsigned int j = 0; j < m1->cols; j++) {
+                m1->mat[i][j] = m1->mat[i][j] - m2->mat[i][j];
+            }
+        }
+    } else {
+        printf("Matrix dimensions should be equal to subtract them!\n");
+        exit(1);
+    }
+}
+
+void mult_inplace(matrix* m1 , matrix* m2) {
+    if(check_dimensions(m1, m2)) {
+        for(unsigned int i = 0; i < m1->rows; i++) {
+            for(unsigned int j = 0; j < m1->cols; j++) {
+                m1->mat[i][j] = m1->mat[i][j] * m2->mat[i][j];
+            }
+        }
+    } else {
+        printf("Matrix dimensions should be equal to multiply them!\n");
+        exit(1);
+    }
+}
+
+void div_inplace(matrix* m1, matrix* m2) {
+     if(check_dimensions(m1, m2)) {
+        for(unsigned int i = 0; i < m1->rows; i++) {
+            for(unsigned int j = 0; j < m1->cols; j++) {
+                m1->mat[i][j] = m1->mat[i][j] / m2->mat[i][j];
+            }
+        }
+    } else {
+        printf("Matrix dimensions should be equal to divide them!\n");
+        exit(1);
+    }
+}
+
+void power_inplace(matrix* m1, int p) {
+    for(unsigned int i = 0; i < m1->rows; i++) {
+        for(unsigned int j = 0; j < m1->cols; j++) {
+            m1->mat[i][j] = pow(m1->mat[i][j], p);
+        }
+    }
+}
+
+void apply_inplace(matrix* m1, double (*f)(double)) {
+    for(unsigned int i = 0; i < m1->rows; i++) {
+        for(unsigned int j = 0; j < m1->cols; j++) {
+            m1->mat[i][j] = f(m1->mat[i][j]);
+        }
+    }
+}
+
+void scale_inplace(matrix* m1, double c) {
+    for(unsigned int i = 0; i < m1->rows; i++) {
+        for(unsigned int j = 0; j < m1->cols; j++) {
+            m1->mat[i][j] = c * m1->mat[i][j];
+        }
+    }
+}
+
+void scalar_sum_inplace(matrix* m1, double c) {
+    for(unsigned int i = 0; i < m1->rows; i++) {
+        for(unsigned int j = 0; j < m1->cols; j++) {
+            m1->mat[i][j] = c + m1->mat[i][j];
+        }
+    }
 }
 
 void save_matrix(matrix* m, char* file_name) {
