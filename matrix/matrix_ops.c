@@ -33,6 +33,18 @@ matrix* sum_rows(matrix* m) {
     return n;
 }
 
+matrix* sum_cols(matrix* m) {
+    matrix* n = new_matrix(1, m->cols);
+    for(unsigned int i = 0; i < m->cols; i++) {
+        double tmp = 0.0;
+        for(unsigned int j = 0; j < m->rows; j++) {
+            tmp += m->mat[j][i];
+        }
+        n->mat[0][i] = tmp;
+    }
+    return n;
+}
+
 double prod(matrix* m) {
     double prod = 1.0;
     for(unsigned int i = 0; i < m->rows; i++) {
