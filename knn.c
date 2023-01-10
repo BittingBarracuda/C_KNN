@@ -4,7 +4,7 @@
 
 #define MAXINPUT 1024
 
-int* fit(matrix* test, matrix* train, vector* (*dist)(matrix*, vector*), unsigned int k);
+int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vector*), unsigned int k);
 void read_data(char* file_path, char* classes_path, matrix* data, int* classes);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 int get_class(int* classes, unsigned int* closest, int k);
