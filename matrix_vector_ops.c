@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "matrix_vector_ops.h"
 
 int check_dimensions_rows(matrix* m, vector* v) {
