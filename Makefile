@@ -3,7 +3,7 @@ HEADERS = $(wildcard matrix/*.h vector/*.h *.h)
 OBJ = ${C_SOURCES:.c=.o}
 CFLAGS = 
 
-MAIN = knn
+MAIN = main
 CC = /usr/bin/gcc
 LINKER = /usr/bin/ld
 
