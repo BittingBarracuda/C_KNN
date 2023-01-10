@@ -6,8 +6,6 @@
 
 #define MAXCHAR 1024
 
-srand(time(NULL));
-
 int check_dimensions(matrix* m1, matrix* m2) {
     if(m1->rows == m2->rows && m1->cols == m2->cols) return 1;
     return 0;
@@ -363,6 +361,7 @@ matrix* read_matrix(char* file_name) {
 }
 
 void shuffle(matrix* m) {
+    srand(time(NULL));
     for(unsigned int i = 0; i < m->rows; i++) {
         int r = rand() % m->rows;
         double* tmp = m->mat[r];
@@ -372,6 +371,7 @@ void shuffle(matrix* m) {
 }
 
 void shuffle_with_classes(matrix* m, int* classes) {
+    srand(time(NULL));
     for(unsigned int i = 0; i < m->rows; i++) {
         int r = rand() % m->rows;
         double* tmp_m = m->mat[r];
