@@ -104,11 +104,11 @@ int main(void) {
     char* classes_path = calloc(MAXINPUT, sizeof(char));
     matrix* data; int* classes;
     printf("[+] Enter the path to the dataset file: ");
-    scanf(" %s\n", file_path);
+    scanf(" %s", file_path);
     printf("[+] Enter the path to the file with the classes: ");
-    scanf(" %s\n", classes_path);
+    scanf(" %s", classes_path);
     printf("[+] Enter the number of neighbors for the K-NN classifier: ");
-    scanf(" %d\n", &k);
+    scanf(" %d", &k);
     printf("[!] Reading dataset and classes files...\n");
     read_data(file_path, classes_path, data, classes);
     printf("[!] Datasets files read and saved!\n");
