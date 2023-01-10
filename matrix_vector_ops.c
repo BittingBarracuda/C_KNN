@@ -123,7 +123,7 @@ vector* dot_mv(matrix* m, vector* v) {
     }
 }
 
-matrix* dot_vm(vector* v, matrix* m) {
+vector* dot_vm(vector* v, matrix* m) {
     if(check_dimensions_rows(m, v)) {
         vector* n = new_vector(m->cols);
         for(unsigned int i = 0; i < m->cols; i++) {
