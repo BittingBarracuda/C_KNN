@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "distances.h"
+#include "./vector/vector_ops.h"
 
 #define MAXINPUT 1024
 
