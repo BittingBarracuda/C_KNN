@@ -37,6 +37,7 @@ int* read_classes_file(char* file_path, int n_instances) {
         fgets(line, MAXINPUT, fd);
         *(classes + i) = atoi(line);
     }
+    fclose(fd);
     return classes;
 }
 
