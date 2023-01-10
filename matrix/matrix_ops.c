@@ -341,7 +341,7 @@ void save_matrix(matrix* m, char* file_name) {
         }
     }
     printf("Matrix successfully saved to %s\n", file_name);
-    fclose(file_name);
+    fclose(file);
 }
 
 matrix* read_matrix(char* file_name) {
@@ -358,6 +358,7 @@ matrix* read_matrix(char* file_name) {
             m->mat[i][j] = strtod(read, NULL);
         }
     }
+    fclose(file);
     return m;
 }
 
