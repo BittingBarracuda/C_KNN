@@ -90,7 +90,7 @@ vector* abs_vec(vector* v) {
 }
 
 vector* add_vec(vector* v1, vector* v2) {
-    if(check_dimensions(v1, v2)) {
+    if(check_dimensions_vec(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
             v3->vec[i] = v1->vec[i] + v2->vec[i];
@@ -103,7 +103,7 @@ vector* add_vec(vector* v1, vector* v2) {
 }
 
 vector* sub_vec(vector* v1, vector* v2) {
-    if(check_dimensions(v1, v2)) {
+    if(check_dimensions_vec(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
             v3->vec[i] = v1->vec[i] - v2->vec[i];
@@ -116,7 +116,7 @@ vector* sub_vec(vector* v1, vector* v2) {
 }
 
 vector* mult_vec(vector* v1, vector* v2) {
-    if(check_dimensions(v1, v2)) {
+    if(check_dimensions_vec(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
             v3->vec[i] = v1->vec[i] * v2->vec[i];
@@ -129,7 +129,7 @@ vector* mult_vec(vector* v1, vector* v2) {
 }
 
 vector* div_vec(vector* v1, vector* v2) {
-    if(check_dimensions(v1, v2)) {
+    if(check_dimensions_vec(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         for(unsigned int i = 0; i < v1->dim; i++) {
             v3->vec[i] = v1->vec[i] / v2->vec[i];
@@ -170,7 +170,7 @@ vector* apply_vec(vector* v, double (*f)(double)) {
 }
 
 double dot_vec(vector* v1, vector* v2) {
-    if(check_dimensions(v1, v2)) {
+    if(check_dimensions_vec(v1, v2)) {
         vector* v3 = new_vector(v1->dim);
         double total = 0.0;
         for(unsigned int i = 0; i < v1->dim; i++) {
