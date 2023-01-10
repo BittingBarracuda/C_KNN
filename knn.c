@@ -84,8 +84,8 @@ void split_classes_array(int* classes, int* classes_train, int* classes_test, do
         for(unsigned int i = 0; i < n_rows_train; i++) {
             *(classes_train + i) = *(classes + i);
         }
-        for(unsigned int i = n_rows_train; i < size; i++) {
-            *(classes_test + i) = *(classes + i);
+        for(unsigned int i = 0; i < n_rows_test; i++) {
+            *(classes_test + i) = *(classes + n_rows_train + i);
         }
     }
 }
