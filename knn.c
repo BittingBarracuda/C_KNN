@@ -113,12 +113,16 @@ int main(void) {
     printf("[!] Reading dataset and classes files...\n");
     read_data(file_path, classes_path, data, classes);
     printf("[!] Datasets files read and saved!\n");
-    matrix* train; matrix* test;
+    matrix* train; matrix* test; int* classes_train; int* classes_test;
     printf("[!] Splitting dataset into test and train sets...\n");
     get_matrix_split(data, train, test, 0.7);
-    free_matrix(data);
+    split_classes_array(classes, classes_train, classes_test, 0.7);
+    free_matrix(data); free(classes);
     printf("[!] Fitting test dataset...\n");
-    int* predicted_classes = fit(train, test, classes, euclidean, k);
-    printf("[+] Precission of the model is: %.6f\n", get_precission(classes, predicted_classes));
-    free(predicted_classes); free_matrix(train); free_matrix(test); free(file_path); free(classes_path);
+    int* predicted_classes = fit(train, test, classes_test, euclidean, k);
+    printf("[+] Precission of the model is: %.6f\n", get_precission(classes_test, predicted_classes));
+    free(predicted_classes);
+    free_matrix(train); free_matrix(test); 
+    free(file_path); free(classes_path);
+    free(classes_test); free(classes_train);
 }
