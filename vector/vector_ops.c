@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <float.h>
 #include "vector_ops.h"
 
