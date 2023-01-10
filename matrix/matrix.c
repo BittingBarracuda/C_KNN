@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "matrix.h"
 
+#define MAXCHAR 1024
+
 matrix* new_matrix(int rows, int cols) {
     matrix* mat = malloc(sizeof(matrix));
     mat->rows = rows;
@@ -85,4 +87,35 @@ matrix* copy_matrix(matrix* m) {
         }
     }
     return n;
+}
+
+void save_matrix(matrix* m, char* file_name) {
+    FILE* file = fopen(file_name, "w");
+    fprintf(file, "%d\n", m->rows);
+    fprintf(file, "%d\n", m->cols);
+    for(unsigned int i = 0; i < m->rows; i++) {
+        for(unsigned int j = 0; j < m->cols; j++) {
+            fprintf(file, ".6f\n", m->mat[i][j]);
+        }
+    }
+    printf("Matrix successfully saved to %s\n", file_name);
+    fclose(file);
+}
+
+matrix* read_matrix(char* file_name) {
+    FILE* file = fopen(file_name, "r");
+    char read[MAXCHAR];
+    fgets(read, MAXCHAR, file);
+    int rows = atoi(read);
+    fgets(read, MAXCHAR, file);
+    int cols = atoi(read);
+    matrix* m = new_matrix(rows, cols);
+    for(unsigned int i = 0; i < rows; i++) {
+        for(unsigned int j = 0; j < cols; j++) {
+            fgets(read, MAXCHAR, file);
+            m->mat[i][j] = strtod(read, NULL);
+        }
+    }
+    fclose(file);
+    return m;
 }

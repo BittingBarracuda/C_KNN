@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "distances.h"
-#include "./matrix/matrix_ops.h"
 
 #define MAXINPUT 1024
 

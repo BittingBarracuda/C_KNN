@@ -13,3 +13,5 @@ void fill_matrix_val(matrix* m, double val);
 void free_matrix(matrix* m);
 void print_matrix(matrix* m);
 matrix* copy_matrix(matrix* m);
+void save_matrix(matrix* m1, char* file_name);
+matrix* read_matrix(char* file_name);

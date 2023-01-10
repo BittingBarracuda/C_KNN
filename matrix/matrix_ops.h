@@ -29,8 +29,6 @@ void power_inplace(matrix* m1, int p);
 void apply_inplace(matrix* m1, double (*f)(double));
 void scale_inplace(matrix* m1, double c);
 void scalar_sum_inplace(matrix* m1, double c);
-void save_matrix(matrix* m1, char* file_name);
-matrix* read_matrix(char* file_name);
 void shuffle(matrix* m);
 void shuffle_with_classes(matrix* m, int* classes);
 void get_matrix_split(matrix* m, matrix* s1, matrix* s2, double split);
