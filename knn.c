@@ -6,6 +6,7 @@
 
 int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vector*), unsigned int k);
 void read_data(char* file_path, char* classes_path, matrix* data, int* classes);
+int* read_classes_file(char* file_path, int n_instances);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 int get_class(int* classes, unsigned int* closest, int k);
 void split_classes_array(int* classes, int* classes_train, int* classes_test, double training_split);
@@ -30,7 +31,7 @@ void read_data(char* file_path, char* classes_path, matrix* data, int* classes) 
 
 int* read_classes_file(char* file_path, int n_instances) {
     FILE* fd = fopen(file_path, "r");
-    char* line[MAXINPUT];
+    char line[MAXINPUT];
     int* classes = calloc(n_instances, sizeof(int));
     for(unsigned int i = 0; i < n_instances; i++) {
         fgets(line, MAXINPUT, fd);
