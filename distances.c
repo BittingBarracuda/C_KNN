@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "distances.h"
+#include "./matrix/matrix_ops.h"
 
 vector* euclidean(matrix* m, vector* x) {
     matrix* tmp1 = sub_rows(m, x);
