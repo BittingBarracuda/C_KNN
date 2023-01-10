@@ -4,7 +4,7 @@
 #include <float.h>
 #include "vector_ops.h"
 
-int check_dimensions(vector* v1, vector* v2) {
+int check_dimensions_vec(vector* v1, vector* v2) {
     if(v1->dim == v2->dim) return 1;
     return 0;
 }
