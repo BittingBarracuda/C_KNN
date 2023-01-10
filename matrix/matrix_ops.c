@@ -40,7 +40,7 @@ double min_rows(matrix* m) {
 
 int* max_rows_index(matrix* m) {
     double max = m->mat[0][0];
-    int index[2] = {0, 0};
+    int* index = calloc(2, sizeof(int));
     for(unsigned int i = 0; i < m->rows; i++) {
         for(unsigned int j = 0; j < m->cols; j++) {
             if(m->mat[i][j] > max) { 
@@ -54,7 +54,7 @@ int* max_rows_index(matrix* m) {
 
 int* min_rows_index(matrix* m) {
     double min = m->mat[0][0];
-    int index[2] = {0, 0};
+    int* index = calloc(2, sizeof(int));
     for(unsigned int i = 0; i < m->rows; i++) {
         for(unsigned int j = 0; j < m->cols; j++) {
             if(m->mat[i][j] < min) { 
@@ -165,7 +165,7 @@ matrix* mult(matrix* m1 , matrix* m2) {
     }
 }
 
-matrix* div(matrix* m1, matrix* m2) {
+matrix* divide(matrix* m1, matrix* m2) {
     if(check_dimensions(m1, m2)) {
         matrix* m3 = new_matrix(m1->rows, m1->cols);
         for(unsigned int i = 0; i < m1->rows; i++) {
