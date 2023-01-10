@@ -28,7 +28,7 @@ vector* vector_from_matrix(matrix* m) {
         }
         return v;
     } else if(m->rows == 1) {
-        vector* v = new_vecto(m->cols);
+        vector* v = new_vector(m->cols);
         for(unsigned int i = 0; i < m->cols; i++) {
             v->vec[i] = m->mat[0][i];
         }
