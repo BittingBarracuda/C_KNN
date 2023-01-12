@@ -32,3 +32,4 @@ void scalar_sum_inplace(matrix* m1, double c);
 void shuffle(matrix* m);
 void shuffle_with_classes(matrix* m, int* classes);
 void get_matrix_split(matrix* m, matrix* s1, matrix* s2, double split);
+void print_shape(matrix* m);
