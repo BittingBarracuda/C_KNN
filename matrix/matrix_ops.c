@@ -370,5 +370,5 @@ void get_matrix_split(matrix* m, matrix* s1, matrix* s2, double split) {
 }
 
 void print_shape(matrix* m) {
-    printf("(%d, %d)", m->rows, m->cols);
+    printf("(%d, %d)\n", m->rows, m->cols);
 }
