@@ -150,7 +150,7 @@ vector* power_vec(vector* v1, int p) {
 }
 
 void delete_element_vec(vector* v, int pos) {
-    if(v->dim <= pos) {
+    if(pos <= v->dim) {
         v->dim = v->dim - 1;
         for(unsigned int i = pos; i < v->dim; i++) {
             v->vec[i] = v->vec[i+1];
