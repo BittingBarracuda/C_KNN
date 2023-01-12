@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "distances.h"
 
 #define MAXINPUT 1024
@@ -123,8 +124,12 @@ int main(void) {
 
     // ---------------------- GET PRECISSION WITH TEST DATASET ----------------------
     printf("[!] Fitting test dataset...\n");
+    clock_t begin = clock();
     int* predicted_classes = fit(train, test, classes_test, euclidean, k);
     printf("[+] Precission of the model is: %.6f\n", get_precission(classes_test, predicted_classes, n_rows_test));
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("[+] Time required for fitting: %f s", time_spent);
     free(predicted_classes);
     free_matrix(train); free_matrix(test); 
     free(file_path); free(classes_path);
