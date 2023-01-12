@@ -96,7 +96,6 @@ int main(void) {
     int k;
     char* file_path = calloc(MAXINPUT, sizeof(char));
     char* classes_path = calloc(MAXINPUT, sizeof(char));
-    int* classes;
     printf("[+] Enter the path to the dataset file: ");
     scanf(" %s", file_path);
     printf("[+] Enter the path to the file with the classes: ");
@@ -105,9 +104,8 @@ int main(void) {
     scanf(" %d", &k);
     printf("[!] Reading dataset and classes files...\n");
     matrix* data = read_matrix(file_path);
-    read_classes_file(classes_path, data->rows);
+    int* classes = read_classes_file(classes_path, data->rows);
     shuffle_with_classes(data, classes);
-    //read_data(file_path, classes_path, data, classes);
     printf("[!] Datasets files read and saved!\n");
     matrix* train; matrix* test; int* classes_train; int* classes_test;
     printf("[!] Splitting dataset into test and train sets...\n");
