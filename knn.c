@@ -5,7 +5,6 @@
 #define MAXINPUT 1024
 
 int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vector*), unsigned int k);
-void read_data(char* file_path, char* classes_path, matrix* data, int* classes);
 int* read_classes_file(char* file_path, int n_instances);
 unsigned int* get_nearest_k(matrix* data, vector* x, vector* (*dist)(matrix*, vector*), unsigned int k);
 int get_class(int* classes, unsigned int* closest, int k);
@@ -21,12 +20,6 @@ int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vec
         free(tmp);
     }
     return predicted_classes;
-}
-
-void read_data(char* file_path, char* classes_path, matrix* data, int* classes) {
-    data = read_matrix(file_path);
-    classes = read_classes_file(classes_path, data->rows);
-    shuffle_with_classes(data, classes);
 }
 
 int* read_classes_file(char* file_path, int n_instances) {
@@ -103,7 +96,7 @@ int main(void) {
     int k;
     char* file_path = calloc(MAXINPUT, sizeof(char));
     char* classes_path = calloc(MAXINPUT, sizeof(char));
-    matrix* data; int* classes;
+    int* classes;
     printf("[+] Enter the path to the dataset file: ");
     scanf(" %s", file_path);
     printf("[+] Enter the path to the file with the classes: ");
@@ -111,7 +104,10 @@ int main(void) {
     printf("[+] Enter the number of neighbors for the K-NN classifier: ");
     scanf(" %d", &k);
     printf("[!] Reading dataset and classes files...\n");
-    read_data(file_path, classes_path, data, classes);
+    matrix* data = read_matrix(file_path);
+    read_classes_file(classes_path, data->rows);
+    shuffle_with_classes(data, classes);
+    //read_data(file_path, classes_path, data, classes);
     printf("[!] Datasets files read and saved!\n");
     matrix* train; matrix* test; int* classes_train; int* classes_test;
     printf("[!] Splitting dataset into test and train sets...\n");
