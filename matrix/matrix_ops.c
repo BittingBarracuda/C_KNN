@@ -350,20 +350,16 @@ void shuffle_with_classes(matrix* m, int* classes) {
     }
 }
 
-void get_matrix_split(matrix* m, matrix* s1, matrix* s2, double split) {
-    if(split <= 1.0 && split >= 0.0) {
-        unsigned int n_rows_s1 = (unsigned int)(split * m->rows);
-        unsigned int n_rows_s2 = (unsigned int)(m->rows - n_rows_s1);
-        s1 = new_matrix(n_rows_s1, m->cols);
-        s2 = new_matrix(n_rows_s2, m->cols);
-        for(unsigned int i = 0; i < n_rows_s1; i++) {
+void get_matrix_split(matrix* m, matrix* s1, matrix* s2, unsigned int n1, unsigned int n2) {
+    if(n1 < m->rows && n2 < m->rows && n1 + n2 == m->rows) {
+        for(unsigned int i = 0; i < n1; i++) {
             for(unsigned int j = 0; j < m->cols; j++) {
                 s1->mat[i][j] = m->mat[i][j];
             }
         }
-        for(unsigned int i = 0; i < n_rows_s2; i++) {
+        for(unsigned int i = 0; i < n2; i++) {
             for(unsigned int j = 0; j < m->cols; j++) {
-                s2->mat[i][j] = m->mat[n_rows_s1+i][j];
+                s2->mat[i][j] = m->mat[n1+i][j];
             }
         }
     }
