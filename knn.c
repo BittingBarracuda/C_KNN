@@ -23,7 +23,6 @@ int* fit(matrix* train, matrix* test, int* classes, vector* (*dist)(matrix*, vec
 }
 
 int* read_classes_file(char* file_path, int n_instances) {
-    printf("llego");
     FILE* fd = fopen(file_path, "r");
     char line[MAXINPUT];
     int* classes = calloc(n_instances, sizeof(int));
